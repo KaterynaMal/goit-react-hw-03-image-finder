@@ -1,4 +1,4 @@
-// import css from './Styles.module.css';
+import css from './Styles.module.css';
 import { Component } from 'react';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Searchbar } from "./Searchbar/Searchbar";
@@ -16,7 +16,7 @@ this.setState({photoname: e.target.value})
 
   render() {
   return (
-    <div>
+    <div className={css.App}>
       <Searchbar
         onChange={this.handleInputChange}
       ></Searchbar>
