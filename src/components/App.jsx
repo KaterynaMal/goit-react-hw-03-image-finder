@@ -1,16 +1,28 @@
-export const App = () => {
+// import css from './Styles.module.css';
+import { Component } from 'react';
+import { ImageGallery } from './ImageGallery/ImageGallery';
+import { Searchbar } from "./Searchbar/Searchbar";
+
+
+
+export class App extends Component {
+  state = {
+  
+  };
+
+  handleInputChange = e => {
+this.setState({photoname: e.target.value})
+  };
+
+  render() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Searchbar
+        onChange={this.handleInputChange}
+      ></Searchbar>
+      <ImageGallery></ImageGallery>
     </div>
   );
+}
+  
 };
