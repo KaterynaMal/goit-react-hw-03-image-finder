@@ -1,13 +1,15 @@
 import React from 'react';
 import css from './ImageGalleryItem.module.css';
 
-export const ImageGalleryItem = () => {
+const ImageGalleryItem = ({image, onClick}) => {
   return (
     <div>  <li className={css.ImageGalleryItem}>
-      <img src="" alt="" className={css.ImageGalleryItem_image} />
+      <img src={image.webformatURL} alt={image.id} onClick={onClick} className={css.ImageGalleryItem_image} />
     </li>
     </div>
 
   
   )
 }
+
+export { ImageGalleryItem };

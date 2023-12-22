@@ -1,13 +1,37 @@
 import React from 'react';
 import css from './ImageGallery.module.css';
+import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
-const ImageGallery = () => {
+const ImageGallery = ({ images, onImageClick }) => {
   return (
-    <div>
-      <ul className={css.ImageGallery}>
-  
+    <ul className={css.imageGallery}>
+      {images.map((image) => (
+        <ImageGalleryItem key={image.id} image={image} onClick={() => onImageClick(image.largeImageURL)} />
+      ))}
     </ul>
-    </div>
-  )
+  );
 };
+
+
+
+
+// const ImageGallery = ({ images, onImageClick }) => {
+//   return (
+//     <div>
+//       <ul className={css.imageGallery}>
+//         {Array.isArray(images) &&
+//           images.map(image => {
+//             return (
+//               <ImageGalleryItem
+//                 key={image.id}
+//                 image={image}
+//                 onClick={() => onImageClick(image.largeImageURL)}
+//               />
+//             );
+//           })}
+//       </ul>
+//     </div>
+//   );
+// };
+
 export { ImageGallery };
