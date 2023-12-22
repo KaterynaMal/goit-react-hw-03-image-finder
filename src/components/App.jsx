@@ -76,7 +76,7 @@ selectedImage: '',
 
 
   render() {
-    const { searchTerm, images, isLoading, showModal, selectedImage, loadMore } = this.state;
+    const { images, isLoading, showModal, selectedImage, loadMore } = this.state;
 
   return (
     <div className={css.App}>
