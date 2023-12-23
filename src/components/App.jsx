@@ -83,7 +83,7 @@ selectedImage: '',
       <Searchbar
         onSubmit={(query) => this.setState({searchTerm: query})}
       ></Searchbar>
-      <ImageGallery images={images} onImageClick={this.openModal}></ImageGallery>
+      <ImageGallery images={images} onImageClick={this.openModal} ></ImageGallery>
       {isLoading && <Loader />}
         {loadMore && images.length > 0 &&<Button onClick={this.loadMoreHandler} />}
         {showModal && <Modal largeImage={selectedImage} onClose={this.closeModal} />}
