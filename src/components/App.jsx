@@ -2,13 +2,11 @@ import css from './Styles.module.css';
 import { Component } from 'react';
 
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { Searchbar } from "./Searchbar/Searchbar";
+import { Searchbar } from './Searchbar/Searchbar';
 import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 import { fetchData } from 'servises/api';
-
-
 
 export class App extends Component {
   state = {
@@ -18,7 +16,7 @@ export class App extends Component {
     error: null,
     isLoading: false,
     showModal: false,
-selectedImage: '',
+    selectedImage: '',
     loadMore: true,
   };
 
@@ -28,25 +26,26 @@ selectedImage: '',
     try {
       this.setState({ isLoading: true });
 
-        const data = await fetchData(searchTerm, page);
+      const data = await fetchData(searchTerm, page);
 
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         images: [...prevState.images, ...data.hits],
         loadMore: page < Math.ceil(data.totalHits / 12),
       }));
-      
     } catch (error) {
-      
     } finally {
-      this.setState({isLoading: false})
+      this.setState({ isLoading: false });
     }
-  }
-
-  loadMoreHandler = () => {
-    this.setState((prevState) => ({ page: prevState.page + 1 }), this.handleSearch);
   };
 
-  openModal = (largeImageURL) => {
+  loadMoreHandler = () => {
+    this.setState(
+      prevState => ({ page: prevState.page + 1 }),
+      this.handleSearch
+    );
+  };
+
+  openModal = largeImageURL => {
     this.setState({ selectedImage: largeImageURL, showModal: true });
   };
 
@@ -54,7 +53,7 @@ selectedImage: '',
     this.setState({ selectedImage: '', showModal: false });
   };
 
-  handleKeyDown = (e) => {
+  handleKeyDown = e => {
     if (e.code === 'Escape') {
       this.closeModal();
     }
@@ -69,26 +68,35 @@ selectedImage: '',
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.page !== prevState.page || this.state.searchTerm !== prevState.searchTerm) {
+    if (
+      this.state.page !== prevState.page ||
+      this.state.searchTerm !== prevState.searchTerm
+    ) {
       this.handleSearch();
-}
+    }
   }
 
-
   render() {
-    const { images, isLoading, showModal, selectedImage, loadMore } = this.state;
+    const { images, isLoading, showModal, selectedImage, loadMore } =
+      this.state;
 
-  return (
-    <div className={css.App}>
-      <Searchbar
-        onSubmit={(query) => this.setState({searchTerm: query})}
-      ></Searchbar>
-      <ImageGallery images={images} onImageClick={this.openModal} ></ImageGallery>
-      {isLoading && <Loader />}
-        {loadMore && images.length > 0 &&<Button onClick={this.loadMoreHandler} />}
-        {showModal && <Modal largeImage={selectedImage} onClose={this.closeModal} />}
-    </div>
-  );
+    return (
+      <div className={css.App}>
+        <Searchbar
+          onSubmit={query => this.setState({ searchTerm: query })}
+        ></Searchbar>
+        <ImageGallery
+          images={images}
+          onImageClick={this.openModal}
+        ></ImageGallery>
+        {isLoading && <Loader />}
+        {loadMore && images.length > 0 && (
+          <Button onClick={this.loadMoreHandler} />
+        )}
+        {showModal && (
+          <Modal largeImage={selectedImage} onClose={this.closeModal} />
+        )}
+      </div>
+    );
+  }
 }
-  
-};

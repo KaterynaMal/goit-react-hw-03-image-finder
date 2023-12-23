@@ -18,7 +18,6 @@ const fetchData = async (searchTerm, page) => {
 
 export { fetchData };
 
-
 //  const requestsImagesByQuery = async (searchTerm) => {
 //   const apiKey = '40574531-a84246791794da3cbc69c8a1d';
 //   const { data } = await axios.get(

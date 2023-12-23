@@ -5,20 +5,19 @@ import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 const ImageGallery = ({ images, onImageClick }) => {
   return (
     <ul className={css.imageGallery}>
-      {Array.isArray(images) && images.map((image) => {
-        return (
- <ImageGalleryItem key={image.id} image={image} onClick={() => onImageClick(image.largeImageURL)} />
-        )
-      }
-      
-       
-      )}
+      {Array.isArray(images) &&
+        images.map(image => {
+          return (
+            <ImageGalleryItem
+              key={image.id}
+              image={image}
+              onClick={() => onImageClick(image.largeImageURL)}
+            />
+          );
+        })}
     </ul>
   );
 };
-
-
-
 
 // const ImageGallery = ({ images, onImageClick }) => {
 //   return (
