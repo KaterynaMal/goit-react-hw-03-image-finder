@@ -19,7 +19,7 @@ const Searchbar = ({ onSubmit }) => {
         <button type="submit" className={css.searchForm_button}>
           <span className={css.searchForm_button_label}>
             <svg className={css.icon} width="20px" height="20px">
-              <use href="./search (1).svg" />
+              <use href="./search1.svg" />
             </svg>
           </span>
         </button>

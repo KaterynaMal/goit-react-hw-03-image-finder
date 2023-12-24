@@ -40,7 +40,7 @@ export class App extends Component {
 
   loadMoreHandler = () => {
     this.setState(
-      prevState => ({ page: prevState.page + 1 }),
+      prevState => ({ page: prevState.page + 1 })
       // this.handleSearch
     );
   };
@@ -71,7 +71,6 @@ export class App extends Component {
     if (
       this.state.page !== prevState.page ||
       this.state.searchTerm !== prevState.searchTerm
-    
     ) {
       this.handleSearch();
     }

@@ -5,7 +5,7 @@ import css from './Modal.module.css';
 
 const Modal = ({ largeImage, onClose }) => {
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = e => {
       if (e.code === 'Escape') {
         onClose();
       }
@@ -24,6 +24,6 @@ const Modal = ({ largeImage, onClose }) => {
         <img src={largeImage} alt="" />
       </div>
     </div>
-  )
+  );
 };
 export { Modal };

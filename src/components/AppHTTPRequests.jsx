@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class AppHTTPRequests extends Component {
-
   state = {
-    images: null
+    images: null,
   };
 
-
   render() {
-    return (
-      <div></div>
-    )
+    return <div></div>;
   }
 }
